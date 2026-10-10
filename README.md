@@ -4,14 +4,14 @@ This is the Python Bootcamp homework repository of Team 08, class 25C11, for CSC
 
 ## Team members
 
-| No. | Name | Student ID | GitHub username | Folder under `members/` |
-|-----|------|------------|-----------------|-------------------------|
-| 1 | Lê Chí Bảo | 25127017 | cbaolee | bao_lc |
-| 2 | Huỳnh Gia Đạt | 25127032 | hgdat2534 | dat_hg |
-| 3 | Trịnh Trần Hương Mai | 25127212 | hmai | mai_tth |
-| 4 | Cao Thanh Kim Hoa | 25127333 | paikabluu | hoa_ctk |
-| 5 | Nguyễn Quốc Tuấn | 25127248 | SilvQT | tuan_nq |
-| 6 | Thái Mạc Tường Vi | 25127559 | tuongvii2327 | vi_tmt |
+| No. | Name | Student ID | GitHub username |
+|-----|------|------------|-----------------|
+| 1 | Lê Chí Bảo | 25127017 | cbaolee |
+| 2 | Huỳnh Gia Đạt | 25127032 | hgdat2534 |
+| 3 | Trịnh Trần Hương Mai | 25127212 | hmai |
+| 4 | Cao Thanh Kim Hoa | 25127333 | paikabluu |
+| 5 | Nguyễn Quốc Tuấn | 25127248 | SilvQT |
+| 6 | Thái Mạc Tường Vi | 25127559 | tuongvii2327 |
 
 ## Prerequisites
 
