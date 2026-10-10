@@ -1,0 +1,3 @@
+# Instructor's test files are not ours to edit, so ruff skips them.
+# Our own tests (e.g. tests/test_smoke.py) are still linted.
+extend-exclude = ["tests/conftest.py", "tests/test_w*.py"]
