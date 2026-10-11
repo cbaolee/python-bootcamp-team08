@@ -5,4 +5,4 @@
 | TrinhBaoNgoc| w1   | #18   | #25  | paikabluu   | 05/05 |   2   |
 | paikabluu   | w1   | #00   | #00  | SilvQT      | 00/18 |       | 
 | SilvQT      | w1   | #00   | #00  | tuongvii2327| 00/18 |       |
-| tuongvii2327| w1   | #00   | #25  | cbaolee     | 00/18 |       |
+| tuongvii2327| w1   | #00   | #00  | cbaolee     | 00/18 |       |
