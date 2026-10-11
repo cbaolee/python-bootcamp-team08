@@ -18,5 +18,3 @@ def binary_search(a: list[int], key: int) -> int:
             lo = mid + 1
 
     return -1
-
-print(binary_search([], 4))
