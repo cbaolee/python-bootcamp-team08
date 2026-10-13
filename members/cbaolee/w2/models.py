@@ -15,4 +15,4 @@ class Task:
 
     def days_left(self, today: date) -> int:
         delta_days = self.deadline - today
-        return delta_days.days
+        return delta_days.days if delta_days.days >= 0 else 0
