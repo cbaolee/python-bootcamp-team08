@@ -2,4 +2,4 @@
 # Our own tests (e.g. tests/test_smoke.py) are still linted.
 extend-exclude = ["tests/conftest.py", "tests/test_w*.py"]
 [lint]
-ignore = ["PLC0206"]
+ignore = ["PLC0206", "N999"]
