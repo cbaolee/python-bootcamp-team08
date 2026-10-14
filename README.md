@@ -50,9 +50,10 @@ python -m <module_name>
 
 ## Test
 
-Tests will be added as exercises are completed. Run tests using:
 ```bash
-pytest
+pytest -q                                                   # smoke test
+ruff check                                                  # convention test
+pytest -q <test_path> --member <username> --variant <1-6>   # unit test
 ```
 
 Configuration for pytest is provided in `pytest.ini`.
@@ -68,9 +69,22 @@ python-bootcamp-team08/
 ├── .gitignore          # Files that Git must not track
 ├── .github/            # GitHub-specific configuration
 ├── members/            # Individual team member work folders
+│   ├── cbaolee/
+│   │   ├── w1/        # Week 1 exercises
+│   │   ├── w2/        # Week 2 exercises
+│   │   └── w3/        # Week 3 exercises
+│   ├── hgdat2534/
+│   ├── TrinhBaoNgoc/
+│   ├── paikabluu/
+│   ├── SilvQT/
+│   └── tuongvii2327/
 ├── shared/             # Shared code and utilities
+│   └── study_planner/
+├── samples/            # Sample input datasets for exercises
+│   ├── tasks.csv
+│   └── tasks_bad.csv
 ├── docs/               # Project documentation
-└── tests/              # Test suite directory
+├── tests/              # Test suite directory
 ```
 
 ## Development workflow
