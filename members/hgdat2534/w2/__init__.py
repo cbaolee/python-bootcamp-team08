@@ -4,9 +4,9 @@ from .errors import InfeasiblePlan, check_feasible
 from .io_utils import Task, load_tasks, save_json
 
 __all__ = [
+    "InfeasiblePlan",
     "Task",
+    "check_feasible",
     "load_tasks",
     "save_json",
-    "InfeasiblePlan",
-    "check_feasible",
 ]
