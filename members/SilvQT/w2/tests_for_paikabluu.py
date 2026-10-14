@@ -1,4 +1,3 @@
-import pytest
 from members.paikabluu.w1.translate import primes_up_to
 
 

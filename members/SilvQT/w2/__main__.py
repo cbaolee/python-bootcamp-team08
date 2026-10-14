@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from .io_utils import load_tasks
 
 sample_path = Path("samples/tasks.csv")
