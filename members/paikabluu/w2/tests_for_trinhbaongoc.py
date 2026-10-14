@@ -1,4 +1,4 @@
-from members.trinhbaongoc.w1 import translate
+from members.TrinhBaoNgoc.w1 import translate
 
 
 def test_transpose_normal_rectangular():
