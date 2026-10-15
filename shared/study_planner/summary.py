@@ -1,5 +1,6 @@
 from shared.contract import Block
 
+
 def summarize(blocks: list[Block]) -> dict:
     hours_by_task ={}
     block_count = 0
