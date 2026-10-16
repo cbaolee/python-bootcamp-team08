@@ -1,7 +1,7 @@
 from datetime import date
 
-from shared.study_planner.allocate import allocate
 from shared.contract import Task
+from shared.study_planner.allocate import allocate
 
 
 def test_allocate():
