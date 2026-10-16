@@ -1,12 +1,4 @@
-import sys
-from pathlib import Path
-
-CLASS_DIR = str(Path(__file__).resolve().parent.parent)
-
-if CLASS_DIR not in sys.path:
-    sys.path.append(CLASS_DIR)
-
-from contract import Block, Task
+from ..contract import Block, Task
 
 
 def allocate(tasks: list[Task], hours: float) -> list[Block]:

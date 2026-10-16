@@ -1,17 +1,10 @@
 import json
-import sys
 from datetime import date
-from pathlib import Path
 
 import pytest
 
-CLASS_DIR = str(Path(__file__).resolve().parent.parent)
-
-if CLASS_DIR not in sys.path:
-    sys.path.append(CLASS_DIR)
-
-from contract import Block, Task
-from export import export_json
+from shared.contract import Block, Task
+from shared.study_planner.export import export_json
 
 
 def make_blocks():

@@ -1,16 +1,9 @@
-import sys
 from datetime import date
-from pathlib import Path
 
 import pytest
 
-SHARED_DIR = str(Path(__file__).resolve().parent.parent)
-
-if SHARED_DIR not in sys.path:
-    sys.path.append(SHARED_DIR)
-
-from contract import Task
-from parse import parse_csv
+from shared.contract import Task
+from shared.study_planner.parse import parse_csv
 
 
 def test_valid_multiple_rows(tmp_path):

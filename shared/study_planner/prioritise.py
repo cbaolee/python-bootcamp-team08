@@ -1,11 +1,4 @@
-import sys
-from pathlib import Path
-
-CLASS_DIR = str(Path(__file__).resolve().parent.parent)
-if CLASS_DIR not in sys.path:
-    sys.path.append(CLASS_DIR)
-
-from contract import Task
+from ..contract import Task
 
 
 def prioritise(tasks, today) -> list[Task]:

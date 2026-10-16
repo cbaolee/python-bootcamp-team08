@@ -1,15 +1,7 @@
-import sys
-from pathlib import Path
-
-CLASS_DIR = str(Path(__file__).resolve().parent.parent)
-
-if CLASS_DIR not in sys.path:
-    sys.path.append(CLASS_DIR)
-
 from datetime import date
 
-from allocate import allocate
-from contract import Task
+from shared.study_planner.allocate import allocate
+from shared.contract import Task
 
 
 def test_allocate():

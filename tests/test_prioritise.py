@@ -1,13 +1,7 @@
-import sys
 from datetime import date
-from pathlib import Path
 
-CLASS_DIR = str(Path(__file__).resolve().parent.parent)
-if CLASS_DIR not in sys.path:
-    sys.path.append(CLASS_DIR)
-
-from contract import Task
-from prioritise import prioritise
+from shared.contract import Task
+from shared.study_planner.prioritise import prioritise
 
 
 def test_prioritise_standard_calculation():

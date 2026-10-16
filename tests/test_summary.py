@@ -1,13 +1,7 @@
-import sys
 from datetime import date
-from pathlib import Path
 
-CLASS_DIR = str(Path(__file__).resolve().parent.parent)
-if CLASS_DIR not in sys.path:
-    sys.path.append(CLASS_DIR)
-
-from contract import Block, Task
-from summary import summarize
+from shared.contract import Block, Task
+from shared.study_planner.summary import summarize
 
 
 def test_summarize_empty_blocks() -> None:
