@@ -1,11 +1,4 @@
-import sys
-from pathlib import Path
-
-CLASS_DIR = str(Path(__file__).resolve().parent.parent)
-if CLASS_DIR not in sys.path:
-    sys.path.append(CLASS_DIR)
-
-from contract import Block
+from ..contract import Block
 
 
 def render(blocks: list[Block]) -> str:

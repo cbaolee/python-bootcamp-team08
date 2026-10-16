@@ -1,15 +1,8 @@
 import json
-import sys
 from dataclasses import asdict
 from datetime import date
-from pathlib import Path
 
-CLASS_DIR = str(Path(__file__).resolve().parent.parent)
-
-if CLASS_DIR not in sys.path:
-    sys.path.append(CLASS_DIR)
-
-from contract import Block
+from ..contract import Block
 
 
 def date_default(obj):

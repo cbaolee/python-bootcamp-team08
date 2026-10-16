@@ -1,14 +1,7 @@
 import csv
-import sys
 from datetime import date
-from pathlib import Path
 
-SHARED_DIR = str(Path(__file__).resolve().parent.parent)
-
-if SHARED_DIR not in sys.path:
-    sys.path.append(SHARED_DIR)
-
-from contract import Task
+from ..contract import Task
 
 
 def parse_csv(path) -> list[Task]:
