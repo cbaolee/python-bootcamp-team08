@@ -2,7 +2,10 @@ from datetime import date, timedelta
 
 
 def parse_due(text: str, today: date) -> date:
-    """Parses a due date string into a date object relative to `today`."""
+    """Parses a due date string into a date object relative to `today`.
+    Accepts ISO dates ("2026-10-30"), "tomorrow", "in N days", and weekday names ("Fri").
+    Raises ValueError for unrecognized text.
+    """
     clean_text = text.strip().lower()
     if clean_text == "today":
         return today
