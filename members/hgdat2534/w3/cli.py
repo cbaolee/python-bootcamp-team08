@@ -1,70 +1,66 @@
+"""Command-line tool to schedule tasks for tonight based on urgency and hours."""
+
 import argparse
-import re
 import sys
-from datetime import date, timedelta
+from collections.abc import Sequence
+from datetime import date
 from pathlib import Path
 
-from members.hgdat2534.w2 import Task, load_tasks
+for parent in Path(__file__).resolve().parents:
+    if (parent / "members").is_dir():
+        if str(parent) not in sys.path:
+            sys.path.insert(0, str(parent))
+        break
 
+try:
+    from members.minh_nv.w2 import Task, load_tasks
+except ModuleNotFoundError:
+    from ..w2 import Task, load_tasks
 
-def parse_due(text: str, today: date) -> date:
-    """Convert a deadline string into a date object relative to today."""
-    if isinstance(text, date):
-        return text
+try:
+    from members.minh_nv.w3.dates import parse_due
+except ModuleNotFoundError:
+    from .dates import parse_due
 
-    text_clean = text.strip()
-    text_lower = text_clean.lower()
-
+try:
+    from contract import Block
+except ModuleNotFoundError:
     try:
-        return date.fromisoformat(text_clean)
-    except ValueError:
-        pass
+        from .contract import Block
+    except ImportError:
+        from dataclasses import dataclass
 
-    if text_lower == "tomorrow":
-        return today + timedelta(days=1)
+        @dataclass
+        class Block:
+            """Allocated time slice for a specific task."""
 
-    match = re.match(r"^in\s+(\d+)\s+days?$", text_lower)
-    if match:
-        return today + timedelta(days=int(match.group(1)))
-
-    weekdays = {
-        "mon": 0, "monday": 0, "tue": 1, "tuesday": 1,
-        "wed": 2, "wednesday": 2, "thu": 3, "thursday": 3,
-        "fri": 4, "friday": 4, "sat": 5, "saturday": 5,
-        "sun": 6, "sunday": 6,
-    }
-    if text_lower in weekdays:
-        days_ahead = weekdays[text_lower] - today.weekday()
-        if days_ahead <= 0:
-            days_ahead += 7
-        return today + timedelta(days=days_ahead)
-
-    raise ValueError(f"Unknown date format: '{text}'")
+            task: Task
+            hours: float
 
 
-def select_tasks_for_tonight(
-    tasks: list[Task], available_h: float, today: date
-) -> list[Task]:
-    """
-    Sort tasks by urgency (days_left ascending), then importance (descending),
-    and greedily pick tasks that fit within available_h.
-    """
+def plan_tonight(tasks: list[Task], available_h: float, today: date) -> list[Block]:
+    """Rank tasks by urgency and importance and allocate blocks up to available_h."""
     ranked = sorted(
         tasks,
-        key=lambda t: (t.days_left(today), -t.importance, t.effort_h, t.title),
+        key=lambda t: (t.days_left(today), -t.importance, t.title),
     )
 
-    selected = []
+    blocks: list[Block] = []
     remaining_h = available_h
-    for task in ranked:
-        if task.effort_h <= remaining_h + 1e-9:
-            selected.append(task)
-            remaining_h -= task.effort_h
 
-    return selected
+    for task in ranked:
+        if remaining_h <= 1e-9:
+            break
+        allocated = min(task.effort_h, remaining_h)
+        if allocated > 0:
+            blocks.append(Block(task=task, hours=allocated))
+            remaining_h -= allocated
+
+    return blocks
 
 
 def build_parser() -> argparse.ArgumentParser:
+    """Create and configure the argument parser for the CLI."""
     parser = argparse.ArgumentParser(description="Schedule tasks for tonight.")
     parser.add_argument("csv_path", help="Path to the tasks CSV file")
     parser.add_argument(
@@ -82,7 +78,8 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: list[str] | None = None) -> None:
+def main(argv: Sequence[str] | None = None) -> None:
+    """Parse CLI arguments, load tasks, and print tonight's schedule."""
     parser = build_parser()
     args = parser.parse_args(argv)
 
@@ -90,7 +87,10 @@ def main(argv: list[str] | None = None) -> None:
         try:
             today = date.fromisoformat(args.today)
         except ValueError:
-            print(f"Error: Invalid --today date '{args.today}'. Expected YYYY-MM-DD.", file=sys.stderr)
+            print(
+                f"Error: Invalid --today date '{args.today}'. Expected YYYY-MM-DD.",
+                file=sys.stderr,
+            )
             sys.exit(1)
     else:
         today = date.today()
@@ -103,17 +103,17 @@ def main(argv: list[str] | None = None) -> None:
     try:
         tasks = load_tasks(str(csv_path))
         for task in tasks:
-            task.deadline = parse_due(task.deadline, today)
+            task.deadline = parse_due(str(task.deadline), today)
     except ValueError as err:
         print(f"Error: {err}", file=sys.stderr)
         sys.exit(1)
 
-    tonight_tasks = select_tasks_for_tonight(tasks, args.hours, today)
+    blocks = plan_tonight(tasks, args.hours, today)
 
     print(f"Tonight ({args.hours:.1f} h):")
-    for idx, task in enumerate(tonight_tasks, start=1):
-        dots = "." * max(2, 17 - len(task.title))
-        print(f"{idx}. {task.title} {dots} {task.effort_h:.1f} h")
+    for idx, block in enumerate(blocks, start=1):
+        dots = "." * max(2, 17 - len(block.task.title))
+        print(f"{idx}. {block.task.title} {dots} {block.hours:.1f} h")
 
 
 if __name__ == "__main__":
