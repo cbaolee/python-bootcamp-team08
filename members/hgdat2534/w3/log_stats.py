@@ -1,5 +1,6 @@
-from collections import Counter, defaultdict
 import math
+from collections import Counter, defaultdict
+
 
 def analyse(pairs: list[tuple[str, float]]) -> dict:
     counts = Counter()

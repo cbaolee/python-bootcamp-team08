@@ -1,5 +1,6 @@
-from datetime import date, timedelta
 import re
+from datetime import date, timedelta
+
 
 def parse_due(text: str, today: date) -> date:
     text_clean = text.strip()
