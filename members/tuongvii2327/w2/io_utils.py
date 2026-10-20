@@ -6,7 +6,7 @@ from pathlib import Path
 from .models import Task
 
 
-def load_tasks(path) -> list[Task]:
+def load_tasks(path: str | Path) -> list[Task]:
     tasks = []
     with open(path, encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
@@ -26,7 +26,7 @@ def load_tasks(path) -> list[Task]:
     return tasks
 
 
-def save_json(tasks, path) -> None:
+def save_json(tasks: list[Task], path: str | Path) -> None:
     data = [
         {
             "title": t.title,
