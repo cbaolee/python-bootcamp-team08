@@ -13,5 +13,6 @@
 | paikabluu    | w3   | #71   | #76  | SilvQT      | 03/03 |   3   |
 | SilvQT       | w1   | #20   | #26  | tuongvii2327| 04/05 |   5   |
 | SilvQT       | w2   | #42   | #56  | tuongvii2327| 03/03 |   5   |
+| SilvQT       | w3   | #72   | #77  | tuongvii2327| 03/03 |   5   |
 | tuongvii2327 | w1   | #21   | #28  | cbaolee     | 04/05 |   3   |
 | tuongvii2327 | w2   | #43   | #52  | cbaolee     | 03/03 |   4   |
