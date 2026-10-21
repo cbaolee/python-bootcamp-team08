@@ -5,7 +5,7 @@ def can_register_thesis(credits: int, gpa: float) -> bool:
 
 # return a list of reasons why the student can not register thesis.
 # Empty list if the student is enough condition.
-def missing(credits, gpa) -> list[str]:
+def missing(credits: int, gpa: float) -> list[str]:
     miss = []
     if not can_register_thesis(credits, gpa):
         more_cre = 120 - credits
