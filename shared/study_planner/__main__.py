@@ -2,9 +2,9 @@ import argparse
 import sys
 from datetime import date
 
+from .allocate import allocate
 from .parse import parse_csv
 from .prioritise import prioritise
-from .allocate import allocate
 from .render import render
 
 # [TrinhBaoNgoc] TODO: Import libraries handling path (pathlib) and InfeasiblePlan error from shared/errors.py
