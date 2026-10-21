@@ -3,10 +3,10 @@ import sys
 from datetime import date
 
 from .allocate import allocate
+from .export import export_json
 from .parse import parse_csv
 from .prioritise import prioritise
 from .render import render
-from .export import export_json
 
 # [TrinhBaoNgoc] TODO: Import libraries handling path (pathlib) and InfeasiblePlan error from shared/errors.py
 # [paikabluu]    TODO: Import library logging
