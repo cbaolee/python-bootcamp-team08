@@ -2,6 +2,7 @@ import argparse
 import sys
 from datetime import date
 from pathlib import Path
+
 from members.SilvQT.w2.io_utils import load_tasks
 
 
@@ -41,7 +42,7 @@ def main() -> None:
 
     try:
         tasks = load_tasks(args.csv_path)
-    except Exception as err:
+    except ValueError as err:
         print(f"Error loading tasks: {err}", file=sys.stderr)
         sys.exit(1)
 
