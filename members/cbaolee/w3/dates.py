@@ -2,6 +2,7 @@ from datetime import date, timedelta
 
 
 def parse_due(text: str, today: date) -> date:
+    """Due date from today based on text parameter"""
     week_day = {
         "Mon": 0,
         "Tue": 1,

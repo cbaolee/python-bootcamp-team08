@@ -5,7 +5,8 @@ from .io_utils import load_tasks
 ROOT = Path(__file__).resolve().parent.parent.parent.parent
 
 
-def print_tasks(path):
+def print_tasks(path: str):
+    """Print tasks based on a csv file illustrating task"""
     try:
         tasks = load_tasks(path)
     except ValueError as error:

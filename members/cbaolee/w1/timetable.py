@@ -1,4 +1,5 @@
-def by_day(timetable) -> dict[str, str]:
+def by_day(timetable: list[tuple[str, str]]) -> dict[str, str]:
+    """Return a timetable based on course data"""
     result = {}
     
     for course, day in timetable:

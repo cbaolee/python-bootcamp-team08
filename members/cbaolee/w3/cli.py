@@ -1,10 +1,11 @@
 import argparse
 import sys
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 from members.cbaolee.w2.io_utils import load_tasks
 from members.cbaolee.w2.models import Task
+
 
 def main():
     parser = argparse.ArgumentParser(description="Study Planner CLI")
@@ -28,7 +29,7 @@ def main():
 
     try:
         tasks = load_tasks(args.file_path)
-    except Exception as e:
+    except ValueError as e:
         print(f"Lỗi khi đọc CSV: {e}")
         sys.exit(1)
 

@@ -1,6 +1,8 @@
 from collections import Counter, defaultdict
 
-def analyse(pairs) -> dict:
+
+def analyse(pairs: list[tuple[str, int]]) -> dict:
+    """The statics of route list with its latency"""
     if not pairs:
         return {"counts": Counter(), "p95": {}, "slowest": None}
     

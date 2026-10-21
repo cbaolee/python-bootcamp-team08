@@ -6,7 +6,8 @@ from datetime import date
 from .models import Task
 
 
-def load_tasks(path) -> list[Task]:
+def load_tasks(path: str) -> list[Task]:
+    """Load a tasks csv file into a list of tasks"""
     tasks = []
 
     with open(path, mode='r', encoding='utf8') as file:
