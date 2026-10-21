@@ -5,9 +5,10 @@
 | cbaolee      | w3   | #68   | #80  | hgdat2534   | 03/03 |   5   |
 | hgdat2534    | w1   | #17   | #23  | TrinhBaoNgoc| 05/05 |   5   |
 | hgdat2534    | w2   | #39   | #54  | TrinhBaoNgoc| 03/03 |   3   |
+| hgdat2534    | w3   | #69   | #75  | TrinhBaoNgoc| 03/03 |   3   |
 | TrinhBaoNgoc | w1   | #18   | #25  | paikabluu   | 05/05 |   2   |
 | TrinhBaoNgoc | w2   | #40   | #57  | paikabluu   | 03/03 |   5   |
-| TrinhBaoNgoc | w3   | #70   | #78  | paikabluu  | 03/03  |   5   |
+| TrinhBaoNgoc | w3   | #70   | #78  | paikabluu   | 03/03 |   5   |
 | paikabluu    | w1   | #19   | #27  | SilvQT      | 05/05 |   2   |
 | paikabluu    | w2   | #41   | #55  | SilvQT      | 03/03 |   2   |
 | paikabluu    | w3   | #71   | #76  | SilvQT      | 03/03 |   3   |
@@ -16,3 +17,4 @@
 | SilvQT       | w3   | #72   | #77  | tuongvii2327| 03/03 |   5   |
 | tuongvii2327 | w1   | #21   | #28  | cbaolee     | 04/05 |   3   |
 | tuongvii2327 | w2   | #43   | #52  | cbaolee     | 03/03 |   4   |
+| tuongvii2327 | w3   | #73   | #79  | cbaolee     | 03/03 |   5   |
