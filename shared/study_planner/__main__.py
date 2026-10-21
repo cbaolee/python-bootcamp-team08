@@ -3,7 +3,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from ..errors import InfeasiblePlan, check_feasible
+from ..errors import InfeasiblePlan
 from .allocate import allocate
 from .parse import parse_csv
 from .prioritise import prioritise
@@ -40,8 +40,6 @@ def main():
             sys.exit(1)
 
         sorted_tasks = prioritise(tasks, current_date)
-
-        check_feasible(sorted_tasks, args.hours)
 
         blocks = allocate(sorted_tasks, args.hours)
 
