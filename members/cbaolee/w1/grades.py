@@ -1,4 +1,5 @@
-def summary(scores: list[float]) -> dict:
+def summary(scores: list[float]) -> dict[str, float]:
+    """Statistics of a score list"""
     if not scores:
         raise ValueError("Your list is empty!")
 
