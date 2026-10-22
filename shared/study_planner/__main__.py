@@ -5,6 +5,7 @@ from pathlib import Path
 
 from ..errors import InfeasiblePlan
 from .allocate import allocate
+from .export import export_json
 from .parse import parse_csv
 from .prioritise import prioritise
 from .render import render
@@ -16,7 +17,12 @@ def main():
     parser.add_argument("--hours", type=float, required=True, help="Planned hours for studying")
     parser.add_argument("--today", type=str, default=date.today().isoformat(),
                         help="Today in format YYYY-MM-DD")
-
+    # [paikabluu] TODO: Add add_argument for flag "--verbose"
+    parser.add_argument(
+        "--export-json",
+        metavar="PATH",
+        help="Export allocated study plan blocks to JSON file."
+    )
 
     args = parser.parse_args()
 
@@ -54,6 +60,9 @@ def main():
     except ValueError as err:
         print(f"Error: {err}", file=sys.stderr)
         sys.exit(1)
+    if args.export_json:
+        export_json(blocks, args.export_json)
+    # ------------------------------------------------
 
 
 if __name__ == "__main__":
