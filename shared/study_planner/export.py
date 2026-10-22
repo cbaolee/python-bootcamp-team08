@@ -14,5 +14,5 @@ def date_default(obj):
 def export_json(blocks: list[Block], path: str) -> None:
     """Write a list of Block to a JSON file."""
     data = [asdict(block) for block in blocks]
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2, default=date_default)
+    with open(path, "w", encoding="utf-8") as file:
+        json.dump(data, file, ensure_ascii=False, indent=2, default=date_default)

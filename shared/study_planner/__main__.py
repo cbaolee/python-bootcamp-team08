@@ -2,8 +2,11 @@ import argparse
 import logging
 import sys
 from datetime import date
+from pathlib import Path
 
+from ..errors import InfeasiblePlan
 from .allocate import allocate
+from .export import export_json
 from .parse import parse_csv
 from .prioritise import prioritise
 from .render import render
@@ -30,6 +33,12 @@ def main():
     # [paikabluu] Done: Add add_argument for flag "--verbose"
     parser.add_argument(
         "--verbose", action="store_true", help="Enable detailed debug information"
+    )
+    
+    parser.add_argument(
+        "--export-json",
+        metavar="PATH",
+        help="Export allocated study plan blocks to JSON file."
     )
 
     # [SilvQT]       TODO: Add add_argument for flag "--export-json"
@@ -58,8 +67,17 @@ def main():
     # [paikabluu] Done: Add logging.debug("Reading file...")
     logger.debug("Reading file...")
     tasks = parse_csv(args.file_path)
+    file_path = Path(args.file_path)
+    if not file_path.exists():
+        print(f"Error: file not found: {file_path}", file=sys.stderr)
+        sys.exit(1)
 
-    # [TrinhBaoNgoc] TODO: Add logic checking empty CSV file. If empty, raise error and sys.exit(1)
+    try:
+        tasks = parse_csv(args.file_path)
+
+        if not tasks:
+            print("Error: CSV file is empty or has no data rows", file=sys.stderr)
+            sys.exit(1)
 
     # [paikabluu] Done: Add logging.debug("Prioritising tasks...")
     logger.debug("Prioritising tasks...")
@@ -69,12 +87,19 @@ def main():
     logger.debug("Allocating time for plan...")
     blocks = allocate(sorted_tasks, args.hours)
 
-    output_text = render(blocks)
+        output_text = render(blocks)
 
-    print(output_text)
+        print(output_text)
 
-    # [SilvQT] TODO: Check if args.export_json could be called. If could, call module export allocated blocks to JSON file
 
+    except InfeasiblePlan as err:
+        print(f"Error: {err}", file=sys.stderr)
+        sys.exit(1)
+    except ValueError as err:
+        print(f"Error: {err}", file=sys.stderr)
+        sys.exit(1)
+    if args.export_json:
+        export_json(blocks, args.export_json)
     # ------------------------------------------------
 
 
