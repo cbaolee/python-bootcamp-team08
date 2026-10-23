@@ -1,0 +1,20 @@
+[
+  {
+    "task": {
+      "title": "Assignment",
+      "importance": 4,
+      "effort_h": 1.5,
+      "deadline": "2026-10-27"
+    },
+    "hours": 1.5
+  },
+  {
+    "task": {
+      "title": "DS exam",
+      "importance": 5,
+      "effort_h": 6.0,
+      "deadline": "2026-10-30"
+    },
+    "hours": 0.5
+  }
+]
