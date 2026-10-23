@@ -1,7 +1,7 @@
 """End-to-end tests for the shared study planner pipeline (T-W3)."""
 
-from datetime import date
 import json
+from datetime import date
 from pathlib import Path
 
 import pytest
